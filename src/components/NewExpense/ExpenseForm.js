@@ -31,25 +31,30 @@ function ExpenseForm(){
     })
 
     function titleChangeHandler(event){
-       setUserInput({
-        ...userInput,
-        inputTitle : event.target.value 
+       setUserInput((prevState)=>{ 
+        return({
+            ...prevState,
+            inputTitle : event.target.value 
+        })
        });
     }
 
     function amountChangeHandler(event){
-        console.log("amount");
-       setUserInput({
-        ...userInput,
-        inputAmount : event.target.value 
+       setUserInput((prevState)=>{
+        return({
+            ...prevState,
+            inputAmount : event.target.value 
+        })
        });
     }
 
     function dateChangeHandler(event){
         console.log("date");
-       setUserInput({
-        ...userInput,
-        inputDate : event.target.value 
+       setUserInput((prevState)=>{
+        return({
+            ...prevState,
+            inputDate : event.target.value 
+        })
        });
     }
 
