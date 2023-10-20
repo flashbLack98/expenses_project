@@ -18,10 +18,16 @@ function Expenses(props){
         <div>
             <ExpensesContainer className="expenses">
                 <ExpensesFilter defaultYear={yearToFilter} onYearChange={yearChangeHandler} />
-                <ExpenseItem expense={props.expenses[0]}/>
-                <ExpenseItem expense={props.expenses[1]}/>
-                <ExpenseItem expense={props.expenses[2]}/>
-                <ExpenseItem expense={props.expenses[3]}/>
+
+                 {/* print dynamically the expenseItem */}
+                {
+                    props.expenses.map((expense)=>{
+                        return(
+                            <ExpenseItem expense={expense}/> 
+                        )
+                    })
+                }
+                
             </ExpensesContainer>
         </div>
     )
