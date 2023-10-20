@@ -2,10 +2,15 @@ import "./NewExpense.css"
 
 import ExpenseForm from "./ExpenseForm"
 
-function NewExpense(){
+function NewExpense(props){
+
+    function addExpenseHandler(newExpense){
+        props.onAddNewExpense(newExpense) // emit -> the data has passed from child to parent
+    }
+    
     return (
         <div className="new-expense">
-            <ExpenseForm/>
+            <ExpenseForm onAddExpense={addExpenseHandler} />
         </div>
     )
 }

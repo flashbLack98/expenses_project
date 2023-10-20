@@ -25,9 +25,17 @@ const expenses = [
 ];
 
 function App() {
+
+  function addNewExpenseHandler(newExpense){
+    const newExpenseWithID = {
+      ...newExpense,
+      id : Math.random().toString()
+    }
+  }
+  
   return (
     <div>
-      <NewExpense/>
+      <NewExpense onAddNewExpense={addNewExpenseHandler} />
       <Expenses expenses={expenses}/>
     </div>
   );

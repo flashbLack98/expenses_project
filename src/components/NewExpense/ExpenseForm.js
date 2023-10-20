@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
 
-function ExpenseForm(){
+function ExpenseForm(props){
 
     //! Metodo sconsigliato
     /* const [inputTitle, setInputTitle] = useState("");
@@ -49,7 +49,6 @@ function ExpenseForm(){
     }
 
     function dateChangeHandler(event){
-        console.log("date");
        setUserInput((prevState)=>{
         return({
             ...prevState,
@@ -58,21 +57,39 @@ function ExpenseForm(){
        });
     }
 
+    function submitHandler(event){
+        event.preventDefault();
+
+        const newExpenseData = {
+            title : userInput.inputTitle,
+            amount : userInput.inputAmount,
+            date : new Date(userInput.inputDate)
+        }
+
+        props.onAddExpense(newExpenseData) // emit -> the data has passed from child to parent
+        
+        setUserInput({
+            inputTitle: '',
+            inputAmount: '',
+            inputDate: ''
+        })
+    }
+
 
     return(
-        <form>
+        <form onSubmit={submitHandler}>
             <div className="new-expense__controls">
                 <div className="new-expense__control">
                     <label>Title</label>
-                    <input type="text" onChange={titleChangeHandler} />
+                    <input value={userInput.inputTitle} type="text" onChange={titleChangeHandler} />
                 </div>   
                 <div className="new-expense__control">
                     <label>Amount</label>
-                    <input type="number" min="0.01" step="0.01" onChange={amountChangeHandler} />
+                    <input value={userInput.inputAmount} type="number" min="0.01" step="0.01" onChange={amountChangeHandler} />
                 </div>   
                 <div className="new-expense__control">
                     <label>Date</label>
-                    <input type="date" min="2019-01-01" max="2022-12-31" onChange={dateChangeHandler} />
+                    <input value={userInput.inputDate} type="date" min="2019-01-01" max="2022-12-31" onChange={dateChangeHandler} />
                 </div>   
             </div>   
 
