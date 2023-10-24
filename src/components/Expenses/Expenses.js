@@ -23,7 +23,7 @@ function Expenses(props){
                 {
                     props.expenses.map((expense)=>{
                         return(
-                            <ExpenseItem expense={expense}/> 
+                            <ExpenseItem expense={expense} key={expense.id} /> 
                         )
                     })
                 }
