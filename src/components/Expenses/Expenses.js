@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ExpenseItem from "../../components/ExpenseItem/ExpenseItem"
 import ExpensesContainer from "../ExpensesContainer/ExpensesContainer";
 import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
+import ExpensesList from "../ExpensesList/ExpensesList";
 
 import "./Expenses.css"
 
@@ -13,7 +13,7 @@ function Expenses(props){
         setYearToFilter(selectedYear);
     }
 
-    const filterdExpenses = props.expenses.filter((expense) => {
+    const filteredExpenses = props.expenses.filter((expense) => {
         return (
             expense.date.getUTCFullYear() == yearToFilter
         )
@@ -24,14 +24,7 @@ function Expenses(props){
             <ExpensesContainer className="expenses">
                 <ExpensesFilter defaultYear={yearToFilter} onYearChange={yearChangeHandler} />
 
-                 {/* print dynamically the expenseItem */}
-                {
-                    filterdExpenses.map((expense)=>{
-                        return(
-                            <ExpenseItem expense={expense} key={expense.id} /> 
-                        )
-                    })
-                }
+                <ExpensesList filteredExpenses={filteredExpenses} />
                 
             </ExpensesContainer>
         </div>
