@@ -7,12 +7,17 @@ import "./Expenses.css"
 
 function Expenses(props){
 
-    const [yearToFilter, setYearToFilter] = useState('2019')
+    const [yearToFilter, setYearToFilter] = useState("2021")
 
     function yearChangeHandler(selectedYear){
         setYearToFilter(selectedYear);
-        console.log(yearToFilter);
     }
+
+    const filterdExpenses = props.expenses.filter((expense) => {
+        return (
+            expense.date.getUTCFullYear() == yearToFilter
+        )
+    })
     
     return(
         <div>
@@ -21,7 +26,7 @@ function Expenses(props){
 
                  {/* print dynamically the expenseItem */}
                 {
-                    props.expenses.map((expense)=>{
+                    filterdExpenses.map((expense)=>{
                         return(
                             <ExpenseItem expense={expense} key={expense.id} /> 
                         )
