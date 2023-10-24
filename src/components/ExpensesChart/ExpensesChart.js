@@ -25,12 +25,9 @@ function ExpensesChart(props){
         // sommo il costo delle spese fatte nello stesso mese e lo assegno come value nell'array expensesChart
         expensesChart[indexMonth].value += el.amount
     });
-
-    const expensesValue = expensesChart.map((el) => el.value)
-
-    const maxValue = Math.max(...expensesValue)    
     
-    return <Chart monthsChart={expensesChart} maxValue={maxValue} />
+
+    return <Chart monthsChart={expensesChart} />
 }
 
 export default ExpensesChart;
