@@ -36,6 +36,7 @@ function App() {
   function addNewExpenseHandler(newExpense){
     const newExpenseWithID = {
       ...newExpense,
+      amount: +newExpense.amount,
       id : Math.random().toString()
     }
 
