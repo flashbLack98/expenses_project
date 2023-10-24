@@ -3,6 +3,8 @@ import "./ExpenseForm.css";
 
 function ExpenseForm(props){
 
+    /* ------------- INIZIO FORM ---------------- */
+
     //! Metodo sconsigliato
     /* const [inputTitle, setInputTitle] = useState("");
     const [inputAmount, setInputAmount] = useState("");
@@ -73,6 +75,24 @@ function ExpenseForm(props){
             inputAmount: '',
             inputDate: ''
         })
+
+        hideFormHandler()
+    }
+
+    /* ------------- FINE FORM ---------------- */
+
+    const [ showForm, setShowForm ] = useState(false)
+
+    function showFormHandler(){
+        setShowForm(true)
+    }
+    function hideFormHandler(){
+        setShowForm(false)
+    }
+    
+
+    if(!showForm){
+        return <button onClick={showFormHandler} >Add expense</button>
     }
 
 
@@ -94,6 +114,7 @@ function ExpenseForm(props){
             </div>   
 
             <div className="new-expense__actions">
+                <button onClick={hideFormHandler} >Cancel</button>
                 <button type="submit">Add expense</button>
             </div>
         </form>
