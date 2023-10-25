@@ -1,4 +1,4 @@
-import "./NewExpense.css"
+import classes from  "./NewExpense.module.css"
 
 import ExpenseForm from "./ExpenseForm"
 
@@ -9,7 +9,7 @@ function NewExpense(props){
     }
     
     return (
-        <div className="new-expense">
+        <div className={classes["new-expense"]}>
             <ExpenseForm onAddExpense={addExpenseHandler} />
         </div>
     )
